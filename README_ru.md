@@ -1,97 +1,91 @@
 # Linux Networking Lab
 
->English verion: [README.md](README.md)
+> English version: [README.md](README.md)
 
-Проект посвящён изучению сетевой подсистемы Linux на уровне настройки и диагностики. Включает работу с IP-адресацией, маршрутизацией, фильтрацией трафика и базовыми сетевыми сервисами.
+Лабораторный проект по изучению сетевой подсистемы Linux.
 
-## Содержание
+В проекте вручную настраиваются:
 
-Проект охватывает следующие темы:
+* IP-адресация и маршрутизация
+* DHCP и NAT
+* firewall и фильтрация трафика
+* SSH-туннелирование
+* диагностика сетевых соединений
 
-* Работа с IP-адресацией и подсетями
-* Использование утилиты `ipcalc` для анализа сетей
-* Статическая маршрутизация между хостами и через маршрутизаторы
-* Настройка сетевых интерфейсов через Netplan
-* Анализ сетевого трафика (`tcpdump`, `traceroute`)
-* Тестирование пропускной способности (`iperf3`)
-* Настройка фильтрации трафика (`iptables`)
-* Работа с сетевыми экранами (firewall)
-* DHCP: динамическая выдача IP-адресов и резервации по MAC
+Все настройки выполняются через консольные инструменты Linux без использования GUI.
+
+## Темы проекта
+
+* IP-адресация и подсети
+* `ipcalc`
+* статическая маршрутизация
+* Netplan
+* `tcpdump`, `traceroute`
+* `iperf3`
+* `iptables`
+* DHCP
 * NAT (SNAT / DNAT)
-* SSH-туннелирование (local / remote forwarding)
+* SSH tunneling
 
 ## Схема сети
 
-Собранная топология лабораторного стенда (роутеры, рабочие станции, сегменты сети).
+Топология лабораторного стенда:
 
 ![Network topology](images/part5_network.png)
 
 ## Структура проекта
 
-The project is divided into logical parts:
-
-* [Part 1](docs/eng/Part1.md) — IP addressing and subnetting
-* [Part 2](docs/eng/Part2.md) — Basic static routing between two machines
-* [Part 3](docs/eng/Part3.md) — Network throughput testing (`iperf3`)
-* [Part 4](docs/eng/Part4.md) — Basic firewall configuration (`iptables`) and port scanning (`nmap`)
-* [Part 5](docs/eng/Part5.md) — Multi-node static routing
-* [Part 6](docs/eng/Part6.md) — DHCP and automatic network configuration
-* [Part 7](docs/eng/Part7.md) — NAT (SNAT / DNAT) and service access
-* [Part 8](docs/eng/Part8.md) — SSH tunneling
+* [Part 1](docs/ru/Part1_ru.md) — IP-адресация и подсети
+* [Part 2](docs/ru/Part2_ru.md) — Статическая маршрутизация между двумя машинами
+* [Part 3](docs/ru/Part3_ru.md) — Тестирование пропускной способности сети (`iperf3`)
+* [Part 4](docs/ru/Part4_ru.md) — Настройка `iptables` и сканирование портов (`nmap`)
+* [Part 5](docs/ru/Part5_ru.md) — Маршрутизация между несколькими сетями
+* [Part 6](docs/ru/Part6_ru.md) — DHCP и автоматическая настройка сети
+* [Part 7](docs/ru/Part7_ru.md) — NAT (SNAT / DNAT)
+* [Part 8](docs/ru/Part8_ru.md) — SSH-туннелирование
 
 ## Структура репозитория
 
 ```text
 .
-├── docs/         # Основная документация проекта (пошаговые инструкции)
-├── images/       # Схемы сети и скриншоты
-├── notes/        # Дополнительные заметки и пояснения (необязательные материалы)
-├── README_ru.md  # Описание проекта (русская версия)
-└── README.md     # Описание проекта (английская версия)
+├── docs/         # Основная документация
+├── images/       # Схемы и скриншоты
+├── notes/        # Дополнительные заметки
+├── README_ru.md  # Русская версия README
+└── README.md     # English README
 ```
 
 ## Используемые технологии
 
-**1. Основные технологии**
+### Сетевые инструменты
 
-- Linux networking stack
-- Netplan
-- iproute2
-- iptables
-- DHCP (isc-dhcp-server)
-- NAT (SNAT / DNAT)
-- SSH tunneling
+* Netplan
+* iproute2
+* iptables
+* isc-dhcp-server
+* OpenSSH
 
-**2. Инструменты диагностики**
-- tcpdump
-- traceroute
-- iperf3
-- nmap
-- ip
+### Диагностика сети
 
-## Особенности реализации
-
-* Полная настройка сетевых интерфейсов без использования GUI инструментов
-* Ручная конфигурация маршрутизации и DHCP
-* Разделение ролей машин (workstations / routers)
-* Проверка связности через ICMP и TCP
-* Анализ поведения пакетов на уровне маршрутизаторов
+* tcpdump
+* traceroute
+* iperf3
+* nmap
+* ip
 
 ## Требования
 
-Для воспроизведения окружения:
-
 * VirtualBox или аналог
-* Ubuntu Server (рекомендуется 20.04+)
+* Ubuntu Server 20.04+
 * root/sudo доступ
-* минимум 5 виртуальных машин (для Part 5+)
+* минимум 5 виртуальных машин
 
 ## Цель проекта
 
-Понимание того, как в Linux реализованы:
+Практическое изучение:
 
-* маршрутизация IP-пакетов
-* работа сетевых интерфейсов
-* механизмы NAT и firewall
-* автоматическая конфигурация сети (DHCP)
-* диагностика сетевых проблем на уровне пакетов
+* маршрутизации IP-пакетов
+* настройки сетевых интерфейсов
+* работы NAT и firewall
+* DHCP
+* диагностики сетевых проблем
