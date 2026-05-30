@@ -31,7 +31,7 @@
 
 Топология лабораторного стенда:
 
-![Network topology](images/part5_network.png)
+![Network topology](images/network.png)
 
 ## Структура проекта
 

@@ -1,13 +1,6 @@
-## Навигация
-
-↑ [README_ru](../README_ru.md)
-
-← [Part 5. Статическая маршрутизация сети](../docs/Part5.md)
-
-→ [Part 7. NAT](../docs/Part7.md)
-
-
 ## Part 6. Динамическая настройка IP с помощью DHCP
+
+> [English version](../eng/Part6.md)
 
 > **DHCP** (Dynamic Host Configuration Protocol) — это протокол, который автоматически назначает IP-адреса и другие сетевые параметры устройствам в сети. Это упрощает настройку сетевых устройств, так как не нужно вручную настраивать параметры для каждого устройства.
 ---
@@ -23,7 +16,7 @@
   
 Открываем файл конфигурации DHCP сервера */etc/dhcp/dhcpd.conf*, и вносим туда указанные в задании изменения:
 
-![/etc/dhcp/dhcpd.conf](../../images/6.1.1.png)
+![/etc/dhcp/dhcpd.conf](../../images/Part6/6.1.1.png)
 
   **Объяснение изменений:**
     
@@ -53,7 +46,7 @@
 
 Открываем файл */etc/resolv.conf* и добавляем строку `nameserver 8.8.8.8`.
 
-![/etc/resolv.conf](../../images/6.1.2.png)
+![/etc/resolv.conf](../../images/Part6/6.1.2.png)
 
 Так мы добавляем IP-адрес DNS-сервера, который система будет использовать для разрешения доменных имен в IP-адреса. `8.8.8.8` — это IP-адрес публичного DNS-сервера, предоставляемого компанией Google.
 
@@ -61,17 +54,17 @@
 
 2. Перезагрузим службу **DHCP** (`systemctl restart isc-dhcp-server`) на машине r2.
 
-![systemctl restart isc-dhcp-server](../../images/6.2.1.png)
+![systemctl restart isc-dhcp-server](../../images/Part6/6.2.1.png)
 
 Теперь перезагрузим  машину ws21, после чего покажем, что она получила адрес (`ip a`) и пропингуем ws22 с ws21.
 
-![reboot, ip a, ping](../../images/6.2.2.png)
+![reboot, ip a, ping](../../images/Part6/6.2.2.png)
 
 ---
 
 3. Укажем MAC адрес у ws11, для этого в *etc/netplan/00-installer-config.yaml* надо добавить строки: `macaddress: 10:10:10:10:10:BA`, `dhcp4: true`.
 
-![etc/netplan/00-installer-config.yaml](../../images/6.3.png)
+![etc/netplan/00-installer-config.yaml](../../images/Part6/6.3.png)
 
 Теперь выключим машину ws11 и откроем её настройки в VirtualBox: Сеть -> Адаптер 2 -> Дополнительно, находим строку МАС-адрес и прописываем там `1010101010BA`. Снова запускаем машину.
 
@@ -83,19 +76,19 @@
 
   -  **Настроим в файле */etc/dhcp/dhcpd.conf* конфигурацию службы DHCP**:
     
-      ![/etc/dhcp/dhcpd.conf](../../images/6.4.1.png)
+      ![/etc/dhcp/dhcpd.conf](../../images/Part6/6.4.1.png)
   
   - **Отредактируем файла */etc/resolv.conf*:** Добавляем строку `nameserver 8.8.8.8`
 
-      ![/etc/resolv.conf](../../images/6.4.2.png)
+      ![/etc/resolv.conf](../../images/Part6/6.4.2.png)
 
   - **Перезагружаем службу DHCP:**
 
-      ![systemctl restart isc-dhcp-server](../../images/6.4.3.png)
+      ![systemctl restart isc-dhcp-server](../../images/Part6/6.4.3.png)
 
   - **Показываем, что ws11 получила адрес и пингуем ws22 с ws11:**
 
-      ![ip a, ping](../../images/6.4.5.png)
+      ![ip a, ping](../../images/Part6/6.4.5.png)
 
 
 ---
@@ -106,28 +99,20 @@
 
 Проверим IP-адрес ws21 до обновления:
 
-![ip a](../../images/6.5.1.png)
+![ip a](../../images/Part6/6.5.1.png)
 
 Удаляем старый IP-адрес командой `sudo dhclient -r` и запрашиваем обновление IP-адреса с помощью команды `sudo dhclient`. После этого снова проверяем IP-адрес.
 
-![dhclient](../../images/6.5.2.png)
+![dhclient](../../images/Part6/6.5.2.png)
 
 ---
 
-В данном пункте мы пользовались следующими опциями DHCP сервера:
- - Настройки DHCP сервера:
-    - Указание диапазона IP-адресов для раздачи в подсети.
-    - Указание маршрутизатора по-умолчанию (option routers).
-    - Указание DNS-сервера (option domain-name-servers).
-    - Настройка статических IP-адресов для определенных устройств (host, hardware ethernet, fixed-address).
-  - Перезагрузка DHCP службы:
-    - Применение изменений в конфигурации DHCP сервера требует перезагрузки службы.
-    - Перезагрузка клиентских устройств (рабочих станций) позволяет им получить новые IP-адреса от DHCP сервера.
-  - Привязка IP-адреса к MAC-адресу:
-    - Настройка жесткой привязки IP-адреса к MAC-адресу позволяет гарантировать, что определенное устройство всегда получит один и тот же IP-адрес.
+## Навигация
 
----
+↑ [README_ru](../../README_ru.md)
 
-6. Таинственно сохраним дампы образов всех наших машин.
+← [Part 5. Статическая маршрутизация сети](Part5_ru.md)
+
+→ [Part 7. NAT](Part7_ru.md)
 
 ---

@@ -24,7 +24,7 @@ The project covers the following topics:
 
 The project is based on a custom lab topology including routers, workstations, and multiple isolated network segments.
 
-![Network topology](images/part5_network.png)
+![Network topology](images/network.png)
 
 ## Project structure
 

@@ -1,15 +1,7 @@
-## Навигация
-
-↑ [README_ru](../README_ru.md)
-
-← [Part 6. Динамическая настройка IP с помощью DHCP](../docs/Part6.md)
-
-→ [Part 8. Знакомство с SSH Tunnels](../docs/Part8.md)
-
-
-
 ## Part 7. NAT
 
+> [English version](../eng/Part7.md)
+> 
 Выключаем машины ws11 и ws21, они нам в этом задании не понадобятся.
 
 На остальные машины для работы с сервером apache2 нужно установить его на машины (`sudo apt install apache2`).
@@ -18,17 +10,17 @@
 
 1. В файле */etc/apache2/ports.conf* на ws22 и r1 изменим строку `Listen 80` на `Listen 0.0.0.0:80`, то есть сделаем сервер Apache2 общедоступным.
 
-![/etc/apache2/ports.conf](../../images/7.1.ws22.png)
+![/etc/apache2/ports.conf](../../images/Part7/7.1.ws22.png)
 
-![/etc/apache2/ports.conf](../../images/7.1.r1.png)
+![/etc/apache2/ports.conf](../../images/Part7/7.1.r1.png)
 
 ---
 
 2. Запустим веб-сервер Apache командой `service apache2 start` на ws22 и r1.
 
-![service apache2 start](../../images/7.2.ws22.png)
+![service apache2 start](../../images/Part7/7.2.ws22.png)
 
-![service apache2 start](../../images/7.2.r1.png)
+![service apache2 start](../../images/Part7/7.2.r1.png)
 
 ---
 
@@ -39,11 +31,11 @@
 
 После настройки правил запустим файл так же, как в Части 4, с помощью команд `sudo chmod +x /etc/firewall.sh` и `sudo bash /etc/firewall.sh`:
 
-![/etc/firewall.sh](../../images/7.3.1.png)
+![/etc/firewall.sh](../../images/Part7/7.3.1.png)
 
 Теперь проверим соединение между ws22 и r1 командой ping. При запуске файла с этими правилами, ws22 не должна «пинговаться» с r1.
 
-![пинг](../../images/7.3.2.png)
+![пинг](../../images/Part7/7.3.2.png)
 
 Как видим, машины и правда не пингуются.
 
@@ -54,11 +46,11 @@
 
 После чего запустим файл снова.
 
-![/etc/firewall.sh](../../images/7.4.1.png)
+![/etc/firewall.sh](../../images/Part7/7.4.1.png)
 
 Теперь ещё раз проверим соединение между ws22 и r1. При запуске файла с этими правилами, ws22 должна «пинговаться» с r1.
 
-![пинг](../../images/7.4.2.png)
+![пинг](../../images/Part7/7.4.2.png)
 
 Как видим, машины и правда не пингуются.
 
@@ -70,18 +62,24 @@
 
 Вносим изменения в файл и запускаем его.
 
-![/etc/firewall.sh](../../images/7.5.1.png)
+![/etc/firewall.sh](../../images/Part7/7.5.1.png)
 
 Проверим соединение по TCP для SNAT: для этого с ws22 подключимся к серверу Apache на r1 командой `telnet [адрес] [порт]`:
 
-![telnet [адрес] [порт]](../../images/7.5.2.png)
+![telnet [адрес] [порт]](../../images/Part7/7.5.2.png)
 
 Теперь проверим соединение по TCP для DNAT: для этого с r1 подключимся к серверу Apache на ws22 командой `telnet [адрес] [порт]`:
 
-![telnet [адрес] [порт]](../../images/7.5.3.png)
+![telnet [адрес] [порт]](../../images/Part7/7.5.3.png)
 
 ---
 
-6. Сохраняем дампы образов виртуальных машин и прячем их в тени.
+## Навигация
+
+↑ [README_ru](../../README_ru.md)
+
+← [Part 6. Динамическая настройка IP с помощью DHCP](Part6_ru.md)
+
+→ [Part 8. Знакомство с SSH Tunnels](Part8_ru.md)
 
 ---
