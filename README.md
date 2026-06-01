@@ -28,15 +28,15 @@ The project is based on a custom lab topology including routers, workstations, a
 
 ## Project structure
 
-Проект разбит на логические части:
+The project is divided into logical parts:
 
-* [Part 1](docs/eng/Part1.md) — IP-адресация и подсети
-* [Part 2](docs/eng/Part2.md) — Простая статическая маршрутизация между двумя машинами
-* [Part 3](docs/eng/Part3.md) — Измерение пропускной способности сети (iperf3)
-* [Part 4](docs/eng/Part4.md) — Базовый firewall (iptables) и анализ портов (nmap)
-* [Part 5](docs/eng/Part5.md) — Многоузловая статическая маршрутизация
-* [Part 6](docs/eng/Part6.md) — DHCP и автоматическая конфигурация сети
-* [Part 7](docs/eng/Part7.md) — NAT (SNAT / DNAT) и доступ к сервисам
+* [Part 1](docs/eng/Part1.md) — IP addressing and subnetting
+* [Part 2](docs/eng/Part2.md) — Basic static routing between two hosts
+* [Part 3](docs/eng/Part3.md) — Network throughput testing (iperf3)
+* [Part 4](docs/eng/Part4.md) — Basic firewall configuration (iptables) and port scanning (nmap)
+* [Part 5](docs/eng/Part5.md) — Multi-node static routing
+* [Part 6](docs/eng/Part6.md) — DHCP and automatic network configuration
+* [Part 7](docs/eng/Part7.md) — NAT (SNAT / DNAT) and service access
 * [Part 8](docs/eng/Part8.md) — SSH tunneling
 
 ## Repository structure

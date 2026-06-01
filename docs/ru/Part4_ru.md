@@ -20,17 +20,17 @@
 
 **Объяснение скриптов:**
 
-1. `iptables -F` - очистка существующих правил.
+1. `iptables -F` — очистка существующих правил.
 
-2. `iptables -X` - удаление пользовательских цепочек.
+2. `iptables -X` — удаление пользовательских цепочек.
 
-3. `iptables -A INPUT -p TCP --dport=22 -j ACCEPT` - разрешение входящих SSH-подключений (порт 22).
+3. `iptables -A INPUT -p TCP --dport=22 -j ACCEPT` — разрешение входящих SSH-подключений (порт 22).
 
-4. `iptables -A INPUT -p TCP --dport=80 -j ACCEPT` - разрешение входящих HTTP-подключений (порт 80).
+4. `iptables -A INPUT -p TCP --dport=80 -j ACCEPT` — разрешение входящих HTTP-подключений (порт 80).
 
-5. `iptables -A OUTPUT -p ICMP --icmp-type echo-reply -j DROP` - запрет отправки ICMP echo-reply.
+5. `iptables -A OUTPUT -p ICMP --icmp-type echo-reply -j DROP` — запрет отправки ICMP echo-reply.
 
-6. `iptables -A OUTPUT -p ICMP --icmp-type echo-reply -j ACCEPT` - разрешение отправки ICMP echo-reply.
+6. `iptables -A OUTPUT -p ICMP --icmp-type echo-reply -j ACCEPT` — разрешение отправки ICMP echo-reply.
 
 Сделаем скрипт исполняемым и запустим его на обеих машинах:
 
