@@ -54,7 +54,7 @@ ip a
 
 Настроим для `ws11` фиксированное получение адреса по MAC-адресу.
 
-В файле `/etc/netplan/00-installer-config.yaml` укажем MAC-адрес интерфейса и включим получение адреса по `DHCP`:
+В файле `/etc/netplan/00-installer-config.yaml` укажем MAC-адрес интерфейса и включим получение адреса по DHCP:
 
 ```text
 macaddress: 10:10:10:10:10:BA
