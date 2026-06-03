@@ -13,7 +13,7 @@
 > 4. Указать одинаковое имя сети для обеих машин.
 > 5. Запустить виртуальные машины.
 
-![Настройка внутренней сети](../../images/Part2/2.0.0.png)
+![Настройка внутренней сети](../../images/Part2/2.0_1.png)
 
 Проверим список сетевых интерфейсов:
 
@@ -25,11 +25,11 @@ ip a
 
 **ws1**
 
-![ip a ws1](../../images/Part2/2.0.1.ws1.png)
+![ip a ws1](../../images/Part2/2.0_2_ws1.png)
 
 **ws2**
 
-![ip a ws2](../../images/Part2/2.0.1.ws2.png)
+![ip a ws2](../../images/Part2/2.0_2_ws2.png)
 
 ---
 
@@ -56,11 +56,11 @@ sudo netplan apply
 
 **ws1**
 
-![netplan ws1](../../images/Part2/2.0.2.ws1.png)
+![netplan ws1](../../images/Part2/2.0_3_ws1.png)
 
 **ws2**
 
-![netplan ws2](../../images/Part2/2.0.2.ws2.png)
+![netplan ws2](../../images/Part2/2.0_3_ws2.png)
 
 ---
 
@@ -86,7 +86,7 @@ sudo ip route add 172.24.116.8 dev enp0s8
 ping -c 5 172.24.116.8
 ```
 
-![ip route add и ping на ws1](../../images/Part2/2.1.ws1.png)
+![ip route add и ping на ws1](../../images/Part2/2.1_1_ws1.png)
 
 На `ws2`:
 
@@ -95,7 +95,7 @@ sudo ip route add 192.168.100.10 dev enp0s8
 ping -c 5 192.168.100.10
 ```
 
-![ip route add и ping на ws2](../../images/Part2/2.1.ws2.png)
+![ip route add и ping на ws2](../../images/Part2/2.1_1_ws2.png)
 
 Успешный обмен ICMP-пакетами подтверждает наличие маршрута между машинами.
 
@@ -117,11 +117,11 @@ sudo netplan apply
 
 Конфигурация `ws1`:
 
-![netplan ws1](../../images/Part2/2.2.1.ws1.png)
+![netplan ws1](../../images/Part2/2.2_1_ws1.png)
 
 Конфигурация `ws2`:
 
-![netplan ws2](../../images/Part2/2.2.1.ws2.png)
+![netplan ws2](../../images/Part2/2.2_1_ws2.png)
 
 В конфигурациях присутствуют два интерфейса:
 - `enp0s3` — подключение к внешней сети;
@@ -135,7 +135,7 @@ sudo netplan apply
 ping -c 5 172.24.116.8
 ```
 
-![ping ws1](../../images/Part2/2.2.2.ws1.png)
+![ping ws1](../../images/Part2/2.2_2_ws1.png)
 
 На `ws2`:
 
@@ -143,7 +143,7 @@ ping -c 5 172.24.116.8
 ping -c 5 192.168.100.10
 ```
 
-![ping ws2](../../images/Part2/2.2.2.ws2.png)
+![ping ws2](../../images/Part2/2.2_2_ws2.png)
 
 Соединение сохраняется после перезагрузки, поскольку маршрут настроен через Netplan.
 

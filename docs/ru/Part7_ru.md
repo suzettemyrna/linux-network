@@ -30,11 +30,11 @@ Listen 0.0.0.0:80
 
 `ws22`:
 
-![/etc/apache2/ports.conf](../../images/Part7/7.1.ws22.png)
+![/etc/apache2/ports.conf](../../images/Part7/7.1_1_ws22.png)
 
 `r1`:
 
-![/etc/apache2/ports.conf](../../images/Part7/7.1.r1.png)
+![/etc/apache2/ports.conf](../../images/Part7/7.1_1_r1.png)
 
 Запустим `Apache`:
 
@@ -44,11 +44,11 @@ sudo service apache2 start
 
 `ws22`:
 
-![service apache2 start](../../images/Part7/7.2.ws22.png)
+![service apache2 start](../../images/Part7/7.1_2_ws22.png)
 
 `r1`:
 
-![service apache2 start](../../images/Part7/7.2.r1.png)
+![service apache2 start](../../images/Part7/7.1_2_r1.png)
 
 ### 7.2. Базовая фильтрация трафика
 
@@ -58,8 +58,6 @@ sudo service apache2 start
 - очистка таблицы `nat`;
 - политика `FORWARD DROP`.
 
-![firewall.sh](../../images/Part7/7.3.1.png)
-
 Запустим скрипт:
 
 ```bash
@@ -67,11 +65,11 @@ sudo chmod +x /etc/firewall.sh
 sudo /etc/firewall.sh
 ```
 
-![/etc/firewall.sh](../../images/Part7/7.3.1.png)
+![/etc/firewall.sh](../../images/Part7/7.2_1.png)
 
 Проверим доступность `ws22` с `r1`:
 
-![ping](../../images/Part7/7.3.2.png)
+![ping](../../images/Part7/7.2_2.png)
 
 После запрета пересылки пакетов узлы перестают обмениваться трафиком.
 
@@ -81,11 +79,11 @@ sudo /etc/firewall.sh
 
 Добавим правило, разрешающее пересылку ICMP-пакетов.
 
-![firewall.sh](../../images/Part7/7.4.1.png)
+![firewall.sh](../../images/Part7/7.3_1.png)
 
 Перезапустим скрипт и повторим проверку:
 
-![ping](../../images/Part7/7.4.2.png)
+![ping](../../images/Part7/7.3_2.png)
 
 После добавления правила ICMP-эхо запросы снова проходят через `r2`.
 
@@ -95,26 +93,26 @@ sudo /etc/firewall.sh
 
 Добавим в конфигурацию `r2` правила:
 
-- `SNAT` для сети `10.20.0.0`;
-- `DNAT` для перенаправления подключений к порту `8080` на веб-сервер `ws22`.
+- SNAT для сети `10.20.0.0`;
+- DNAT для перенаправления подключений к порту `8080` на веб-сервер `ws22`.
 
-![firewall.sh](../../images/Part7/7.5.1.png)
+![firewall.sh](../../images/Part7/7.4_1.png)
 
-Проверим работу `SNAT`, подключившись с `ws22` к веб-серверу на `r1`:
+Проверим работу SNAT, подключившись с `ws22` к веб-серверу на `r1`:
 
 ```bash
 telnet <r1-ip> 80
 ```
 
-![telnet [адрес] [порт]](../../images/Part7/7.5.2.png)
+![telnet <адрес> <порт>](../../images/Part7/7.4_2.png)
 
-Проверим работу `DNAT`, подключившись с `r1` к `r2` на порт `8080`:
+Проверим работу DNAT, подключившись с `r1` к `r2` на порт `8080`:
 
 ```bash
 telnet <r2-ip> 8080
 ```
 
-![telnet [адрес] [порт]](../../images/Part7/7.5.3.png)
+![telnet <адрес> <порт>](../../images/Part7/7.4_3.png)
 
 Подключение успешно перенаправляется на веб-сервер `ws22`.
 

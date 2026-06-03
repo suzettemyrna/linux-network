@@ -10,13 +10,13 @@
 
 Чтобы создать фаервол на обеих машинах, создадим на каждой файл */etc/firewall.sh* и настроим так:
 
-- Для ws1:
+- Для `ws1`:
 
-  ![/etc/firewall.sh](../../images/Part4/4.1.1.ws1.png)
+  ![/etc/firewall.sh](../../images/Part4/4.1_1_ws1.png)
 
-- Для ws2:
+- Для `ws2`:
 
-  ![/etc/firewall.sh](../../images/Part4/4.1.1.ws2.png)
+  ![/etc/firewall.sh](../../images/Part4/4.1_1_ws2.png)
 
 **Объяснение скриптов:**
 
@@ -39,7 +39,7 @@ sudo chmod +x /etc/firewall.sh
 sudo /etc/firewall.sh
 ```
 
-![sudo /etc/firewall.sh](../../images/Part4/4.1.2.ws1.png) ![sudo /etc/firewall.sh](../../images/Part4/4.1.2.ws2.png)
+![sudo /etc/firewall.sh](../../images/Part4/4.1_2_ws1.png) ![sudo /etc/firewall.sh](../../images/Part4/4.1_2_ws2.png)
 
 **Различия конфигураций:**
 
@@ -55,15 +55,15 @@ sudo /etc/firewall.sh
 
 На `ws2` ответы на ICMP-запросы разрешены:
 
-![ping ws2](../../images/Part4/4.2.1.ws1.png)
+![ping ws2](../../images/Part4/4.2_1_ws1.png)
 
 На `ws1` ответы на ICMP-запросы заблокированы:
 
-![ping ws1](../../images/Part4/4.2.1.ws2.png)
+![ping ws1](../../images/Part4/4.2_1_ws2.png)
 
 Несмотря на отсутствие ответа на ping, сканирование через `nmap` показывает, что узел `ws1` доступен.
 
-![nmap](../../images/Part4/4.2.2.png)
+![nmap](../../images/Part4/4.2_2.png)
 
 ---
 

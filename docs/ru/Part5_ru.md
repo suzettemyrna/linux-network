@@ -36,23 +36,23 @@
 
 - `ws11`:
 
-  ![etc/netplan/00-installer-config.yaml](../../images/Part5/5.1.1.ws11.png)
+  ![etc/netplan/00-installer-config.yaml](../../images/Part5/5.1_1_ws11.png)
 
 - `ws21`:
 
-  ![etc/netplan/00-installer-config.yaml](../../images/Part5/5.1.1.ws21.png)
+  ![etc/netplan/00-installer-config.yaml](../../images/Part5/5.1_1_ws21.png)
 
 - `ws22`:
 
-  ![etc/netplan/00-installer-config.yaml](../../images/Part5/5.1.1.ws22.png)
+  ![etc/netplan/00-installer-config.yaml](../../images/Part5/5.1_1_ws22.png)
 
 - `r1`:
 
-  ![etc/netplan/00-installer-config.yaml](../../images/Part5/5.1.1.r1.png)
+  ![etc/netplan/00-installer-config.yaml](../../images/Part5/5.1_1_r1.png)
 
 - `r2`:
 
-  ![etc/netplan/00-installer-config.yaml](../../images/Part5/5.1.1.r2.png)
+  ![etc/netplan/00-installer-config.yaml](../../images/Part5/5.1_1_r2.png)
 
 Применим изменения:
 
@@ -68,33 +68,33 @@ ip -4 a
 
 - `ws11`:
 
-  ![ip -4 a](../../images/Part5/5.1.2.ws11.png)
+  ![ip -4 a](../../images/Part5/5.1_2_ws11.png)
 
 - `ws21`:
 
-  ![ip -4 a](../../images/Part5/5.1.2.ws21.png)
+  ![ip -4 a](../../images/Part5/5.1_2_ws21.png)
 
 - `ws22`:
 
-  ![ip -4 a](../../images/Part5/5.1.2.ws22.png)
+  ![ip -4 a](../../images/Part5/5.1_2_ws22.png)
 
 - `r1`:
 
-  ![ip -4 a](../../images/Part5/5.1.2.r1.png)
+  ![ip -4 a](../../images/Part5/5.1_2_r1.png)
 
 - `r2`:
 
-  ![ip -4 a](../../images/Part5/5.1.2.r2.png)
+  ![ip -4 a](../../images/Part5/5.1_2_r2.png)
 
 Проверим сетевую связность между узлами:
 
 - `ws22 → ws21`:
   
-  ![ping ws22 → ws21](../../images/Part5/5.1.2.ws22_ping.png)
+  ![ping ws22 → ws21](../../images/Part5/5.1_3_ws22.png)
 
 - `r1 → ws11`:
   
-  ![ping r1 → ws11](../../images/Part5/5.1.2.r1_ping.png)
+  ![ping r1 → ws11](../../images/Part5/5.1_3_r1.png)
   
 
 ---
@@ -110,11 +110,11 @@ sudo sysctl -w net.ipv4.ip_forward=1
 ```
 - `r1`:
 
-  ![sysctl -w net.ipv4.ip_forward=1](../../images/Part5/5.2.1.r1.png)
+  ![sysctl -w net.ipv4.ip_forward=1](../../images/Part5/5.2_1_r1.png)
 
 - `r2`:
   
-  ![sysctl -w net.ipv4.ip_forward=1](../../images/Part5/5.2.1.r2.png)
+  ![sysctl -w net.ipv4.ip_forward=1](../../images/Part5/5.2_1_r2.png)
 
 Для сохранения настройки после перезагрузки добавим параметр в файл `/etc/sysctl.conf`:
 
@@ -124,11 +124,11 @@ net.ipv4.ip_forward = 1
 
 - **r1**:
 
-  ![/etc/sysctl.conf](../../images/Part5/5.2.2.r1.png)
+  ![/etc/sysctl.conf](../../images/Part5/5.2_2_r1.png)
 
 - **r2**:
   
-  ![/etc/sysctl.conf](../../images/Part5/5.2.2.r2.png)
+  ![/etc/sysctl.conf](../../images/Part5/5.2_2_r2.png)
 
 ---
 
@@ -146,15 +146,15 @@ routes:
 
 - `ws11`:
 
-  ![routes: \n to: default \n via: <адрес шлюза](../../images/Part5/5.3.1.ws11.png)
+  ![routes: \n to: default \n via: <адрес шлюза](../../images/Part5/5.3_1_ws11.png)
 
 - `ws21`:
   
-  ![routes: \n to: default \n via: <адрес шлюза](../../images/Part5/5.3.1.ws21.png)
+  ![routes: \n to: default \n via: <адрес шлюза](../../images/Part5/5.3_1_ws21.png)
 
 - `ws22`:
   
-  ![routes: \n to: default \n via: <адрес шлюза](../../images/Part5/5.3.1.ws22.png)
+  ![routes: \n to: default \n via: <адрес шлюза](../../images/Part5/5.3_1_ws22.png)
 
 Применим изменения:
 
@@ -170,15 +170,15 @@ ip r
 
 - `ws11`:
 
-  ![ip r](../../images/Part5/5.3.2.ws11.png)
+  ![ip r](../../images/Part5/5.3_2_ws11.png)
 
 - `ws21`:
   
-  ![ip r](../../images/Part5/5.3.2.ws21.png)
+  ![ip r](../../images/Part5/5.3_2_ws21.png)
 
 - `ws22`:
   
-  ![ip r](../../images/Part5/5.3.2.ws22.png)
+  ![ip r](../../images/Part5/5.3_2_ws22.png)
 
 Проверим прохождение трафика через маршрутизаторы:
 
@@ -186,9 +186,9 @@ ip r
 ping 10.100.0.12
 ```
 
-где 10.100.0.12 — адрес интерфейса `r2`.
+где `10.100.0.12` — адрес интерфейса `r2`.
 
-![ping](../../images/Part5/5.3.3.png)
+![ping](../../images/Part5/5.3_3.png)
 
 Для захвата и анализа сетевого трафика можно использовать `tcpdump`.
 
@@ -198,9 +198,9 @@ ping 10.100.0.12
 sudo tcpdump -tn -i enp0s9
 ```
 
-После повторного запуска `ping` на `ws11` пакеты отображаются в выводе `tcpdump`, что подтверждает прохождение трафика через маршрутизатор.
+После повторного запуска `ping` на `ws11` пакеты отображаются в выводе tcpdump, что подтверждает прохождение трафика через маршрутизатор.
 
-![tcpdump -tn -i enp0s9](../../images/Part5/5.3.4.png)
+![tcpdump -tn -i enp0s9](../../images/Part5/5.3_4.png)
 
 ### 5.4. Добавление статических маршрутов
 
@@ -208,11 +208,11 @@ sudo tcpdump -tn -i enp0s9
 
 - `r1`:
 
-  ![etc/netplan/00-installer-config.yaml](../../images/Part5/5.1.1.r1.png)
+  ![etc/netplan/00-installer-config.yaml](../../images/Part5/5.1_1_r1.png)
 
 - `r2`:
 
-  ![etc/netplan/00-installer-config.yaml](../../images/Part5/5.1.1.r2.png)
+  ![etc/netplan/00-installer-config.yaml](../../images/Part5/5.1_1_r2.png)
 
 Проверим таблицы маршрутизации на обоих роутерах:
 
@@ -222,11 +222,11 @@ ip r
 
 - `r1`:
 
-  ![ip r](../../images/Part5/5.4.2.r1.png)
+  ![ip r](../../images/Part5/5.4_2_r1.png)
 
 - `r2`:
 
-  ![ip r](../../images/Part5/5.4.2.r2.png)
+  ![ip r](../../images/Part5/5.4_2_r2.png)
 
 
 Проверим выбор маршрута для сети `10.10.0.0/18` и маршрута по умолчанию:
@@ -236,7 +236,7 @@ ip r list 10.10.0.0/18
 ip r list 0.0.0.0/0
 ```
 
-  ![ip r list](../../images/Part5/5.4.3.png)
+  ![ip r list](../../images/Part5/5.4_3.png)
 
 Для сети `10.10.0.0/18` используется более специфичный маршрут. Маршрут по умолчанию применяется только в том случае, если для назначения отсутствует более точное правило маршрутизации.
 
@@ -256,9 +256,9 @@ tcpdump -tnv -i enp0s8
 ping 10.20.0.10
 ```
 
-  ![tcpdump](../../images/Part5/5.5.1.r1.png)
+  ![tcpdump](../../images/Part5/5.5_1_r1.png)
 
-  ![ping](../../images/Part5/5.5.1.ws11.png)
+  ![ping](../../images/Part5/5.5_1_ws11.png)
 
 Построим маршрут от `ws11` до `ws21` с помощью `traceroute`:
 
@@ -266,7 +266,7 @@ ping 10.20.0.10
 sudo traceroute 10.20.0.10
 ```
 
-![traceroute](../../images/Part5/5.5.2.png)
+![traceroute](../../images/Part5/5.5_2.png)
 
 `Traceroute` определяет маршрут за счёт увеличения TTL: каждый маршрутизатор уменьшает TTL на 1 и при его обнулении возвращает ICMP `Time Exceeded`.
 
@@ -286,9 +286,9 @@ tcpdump -n -i enp0s8 icmp
 ping 10.30.0.111
 ```
 
-![tcpdump](../../images/Part5/5.6.r1.png)
+![tcpdump](../../images/Part5/5.6_1_r1.png)
 
-![ping](../../images/Part5/5.6.ws11.png)
+![ping](../../images/Part5/5.6_1_ws11.png)
 
 В ответ возвращается ICMP-сообщение об ошибке маршрутизации (Destination Unreachable), что демонстрирует использование ICMP для диагностики сетевых проблем.
 

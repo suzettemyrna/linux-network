@@ -18,7 +18,7 @@ sudo apt install isc-dhcp-server
 
 На `r2` настроим DHCP-сервер в файле `/etc/dhcp/dhcpd.conf`.
 
-![/etc/dhcp/dhcpd.conf](../../images/Part6/6.1.1.png)
+![/etc/dhcp/dhcpd.conf](../../images/Part6/6.1_1.png)
 
 Для настройки DNS-сервера добавим строку в файл `/etc/resolv.conf`:
 
@@ -26,7 +26,7 @@ sudo apt install isc-dhcp-server
 nameserver 8.8.8.8
 ```
 
-![/etc/resolv.conf](../../images/Part6/6.1.2.png)
+![/etc/resolv.conf](../../images/Part6/6.1_2.png)
 
 Перезапустим службу:
 
@@ -34,9 +34,9 @@ nameserver 8.8.8.8
 sudo systemctl restart isc-dhcp-server
 ```
 
-![systemctl restart isc-dhcp-server](../../images/Part6/6.2.1.png)
+![systemctl restart isc-dhcp-server](../../images/Part6/6.1_3.png)
 
-Перезагрузим `ws21` и проверим получение адреса по `DHCP`:
+Перезагрузим `ws21` и проверим получение адреса по DHCP:
 
 ```bash
 ip a
@@ -44,7 +44,7 @@ ip a
 
 Также проверим связность с `ws22`.
 
-![reboot, ip a, ping](../../images/Part6/6.2.2.png)
+![reboot, ip a, ping](../../images/Part6/6.1_4.png)
 
 Подсеть `10.20.0.0/26` настроена как DHCP-пул с диапазоном адресов `10.20.0.2`–`10.20.0.50`.
 
@@ -61,7 +61,7 @@ macaddress: 10:10:10:10:10:BA
 dhcp4: true
 ```
 
-![etc/netplan/00-installer-config.yaml](../../images/Part6/6.3.png)
+![etc/netplan/00-installer-config.yaml](../../images/Part6/6.2_1.png)
 
 После этого выключим виртуальную машину и в настройках VirtualBox укажем тот же MAC-адрес для сетевого адаптера:
 
@@ -79,7 +79,7 @@ dhcp4: true
 
 Файл `/etc/dhcp/dhcpd.conf`:
 
-![/etc/dhcp/dhcpd.conf](../../images/Part6/6.4.1.png)
+![/etc/dhcp/dhcpd.conf](../../images/Part6/6.2_2.png)
 
 Для настройки DNS добавим в `/etc/resolv.conf`:
 
@@ -87,7 +87,7 @@ dhcp4: true
 nameserver 8.8.8.8
 ```
 
-![/etc/resolv.conf](../../images/Part6/6.4.2.png)
+![/etc/resolv.conf](../../images/Part6/6.2_3.png)
 
 Перезапустим DHCP-сервер:
 
@@ -95,17 +95,17 @@ nameserver 8.8.8.8
 sudo systemctl restart isc-dhcp-server
 ```
 
-![systemctl restart isc-dhcp-server](../../images/Part6/6.4.3.png)
+![systemctl restart isc-dhcp-server](../../images/Part6/6.2_4.png)
 
 Проверим получение адреса на `ws11` и доступность `ws22`:
 
-![ip a, ping](../../images/Part6/6.4.5.png)
+![ip a, ping](../../images/Part6/6.2_5.png)
 
 ---
 
 ### 6.3. Обновление DHCP-аренды
 
-На `ws21` и `ws22` включим получение адреса по `DHCP` через `Netplan`:
+На `ws21` и `ws22` включим получение адреса по DHCP через Netplan:
 
 ```text
 dhcp4: true
@@ -119,7 +119,7 @@ sudo netplan apply
 
 Проверим текущий IP-адрес:
 
-![ip a](../../images/Part6/6.5.1.png)
+![ip a](../../images/Part6/6.3_1.png)
 
 Освободим текущую аренду и запросим новый адрес у DHCP-сервера:
 
@@ -130,7 +130,7 @@ sudo dhclient
 
 После получения новой аренды снова проверим IP-адрес:
 
-![dhclient](../../images/Part6/6.5.2.png)
+![dhclient](../../images/Part6/6.3_2.png)
 
 ---
 
