@@ -15,6 +15,8 @@ Install the DHCP server:
 sudo apt install isc-dhcp-server
 ```
 
+---
+
 ### 6.1. DHCP server configuration
 
 On `r2`, configure the DHCP server in `/etc/dhcp/dhcpd.conf`.
