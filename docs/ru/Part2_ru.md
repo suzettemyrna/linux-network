@@ -41,12 +41,6 @@ ip a
 /etc/netplan/00-installer-config.yaml
 ```
 
-После изменения конфигурации применим настройки:
-
-```bash
-sudo netplan apply
-```
-
 Параметры интерфейсов:
 
 | Машина | IP-адрес       | Маска |
@@ -61,6 +55,12 @@ sudo netplan apply
 **ws2**
 
 ![netplan ws2](../../images/Part2/2.0_3_ws2.png)
+
+После изменения конфигурации применим настройки:
+
+```bash
+sudo netplan apply
+```
 
 ---
 
