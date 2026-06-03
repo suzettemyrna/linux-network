@@ -39,7 +39,8 @@ sudo chmod +x /etc/firewall.sh
 sudo /etc/firewall.sh
 ```
 
-![sudo /etc/firewall.sh](../../images/Part4/4.1_2_ws1.png) ![sudo /etc/firewall.sh](../../images/Part4/4.1_2_ws2.png)
+![sudo /etc/firewall.sh](../../images/Part4/4.1_2_ws1.png)
+![sudo /etc/firewall.sh](../../images/Part4/4.1_2_ws2.png)
 
 **Различия конфигураций:**
 
