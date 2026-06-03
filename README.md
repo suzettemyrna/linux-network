@@ -1,8 +1,12 @@
 # Linux Networking Lab
 
->Russian version: [README_ru.md](README_ru.md)
+> Russian version: [README_ru.md](README_ru.md)
 
-This project focuses on exploring the Linux networking subsystem at the level of configuration and diagnostics. It covers IP addressing, routing, traffic filtering, and basic network services.
+Practical laboratory project focused on exploring the Linux networking subsystem.
+
+The project involves manually configuring a network of multiple virtual machines and systematically studying core Linux networking concepts, including IP addressing, routing, DHCP, NAT, firewall configuration, network diagnostics, and SSH tunneling.
+
+All configuration is performed using Linux command-line tools without relying on graphical interfaces.
 
 ## Contents
 
@@ -20,9 +24,22 @@ The project covers the following topics:
 * NAT (SNAT / DNAT)
 * SSH tunneling (local / remote forwarding)
 
+## Learning Outcomes
+
+After completing all laboratory exercises the user will be able to:
+
+* calculate IPv4 network and subnet parameters;
+* configure Linux network interfaces;
+* create static routes;
+* diagnose network connectivity issues;
+* measure network throughput;
+* configure a DHCP server;
+* configure NAT and traffic filtering rules;
+* use SSH tunnels to access remote services.
+
 ## Network topology
 
-The project is based on a custom lab topology including routers, workstations, and multiple isolated network segments.
+Laboratory network topology:
 
 ![Network topology](images/network.png)
 
@@ -39,60 +56,38 @@ The project is divided into logical parts:
 * [Part 7](docs/eng/Part7.md) — NAT (SNAT / DNAT) and service access
 * [Part 8](docs/eng/Part8.md) — SSH tunneling
 
+## Quick start 
+
+For the laboratory exercises, the following are required:
+
+* VirtualBox or a similar virtualization platform;
+* Ubuntu Server 20.04 or newer;
+* root/sudo privileges;
+* at least five virtual machines.
+
+It is recommended to complete the laboratory exercises sequentially, starting with [Part 1](docs/ru/Part1_ru.md).
+
 ## Repository structure
 
 ```text
 .
 ├── docs/         # Main project documentation (step-by-step instructions)
+│   ├── ru/
+│   └── eng/
 ├── images/       # Network diagrams and screenshots
-├── notes/        # Additional notes and explanations (optional materials)
 ├── README_ru.md  # Project overview (russian version)
 └── README.md     # Project overview (english version)
 ```
 
-## Technologies used
+## Tools used
 
-**1. Core technologies**
-
-* Linux networking stack
 * Netplan
 * iproute2
 * iptables
-* DHCP (isc-dhcp-server)
-* NAT (SNAT / DNAT)
-* SSH tunneling
-
-**2. Diagnostic tools**
-
+* isc-dhcp-server
+* OpenSSH
 * tcpdump
 * traceroute
 * iperf3
 * nmap
 * ip
-
-## Implementation highlights
-
-* Full manual network interface configuration without GUI tools
-* Static routing and DHCP configuration from scratch
-* Separation of roles (workstations and routers)
-* Connectivity validation using ICMP and TCP
-* Packet-level analysis on routers
-
-## Requirements
-
-To reproduce the environment:
-
-* VirtualBox or equivalent virtualization software
-* Ubuntu Server (recommended 20.04+)
-* root/sudo privileges
-* at least 5 virtual machines (for Part 5 and beyond)
-
-## Project goal
-
-To understand how Linux implements:
-
-* IP packet routing
-* network interface management
-* NAT and firewall mechanisms
-* dynamic network configuration (DHCP)
-* network troubleshooting at packet level
